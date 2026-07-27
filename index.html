@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HFM</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    user-select:none;
+}
+
+body{
+
+    height:100vh;
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle,#3a0000 0%,#160000 45%,#050000 100%);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:Cinzel,serif;
+
+    transition:background 3s;
+}
+
+
+/* Lumière rouge */
+
+body::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    background:#900000;
+
+    filter:blur(180px);
+
+    opacity:.25;
+
+    animation:pulse 5s infinite alternate;
+
+}
+
+
+@keyframes pulse{
+
+    from{
+        transform:scale(1);
+        opacity:.2;
+    }
+
+    to{
+        transform:scale(1.3);
+        opacity:.4;
+    }
+
+}
+
+
+
+/* Cendres */
+
+.ash{
+
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    background:#777;
+
+    border-radius:50%;
+
+    opacity:.7;
+
+    animation:fall linear infinite;
+
+}
+
+
+@keyframes fall{
+
+    from{
+
+        transform:translateY(-20vh);
+
+    }
+
+    to{
+
+        transform:translateY(120vh);
+
+    }
+
+}
+
+
+
+/* Titre */
+
+#logo{
+
+    position:absolute;
+
+    top:35px;
+
+    color:#050505;
+
+    font-size:55px;
+
+    letter-spacing:18px;
+
+    text-shadow:
+    0 0 10px #500000;
+
+}
+
+
+
+/* Bloc */
+
+.box{
+
+    position:relative;
+
+    z-index:2;
+
+    width:450px;
+
+    padding:45px;
+
+    background:#050505;
+
+    border:1px solid #550000;
+
+    box-shadow:
+
+    0 0 40px #450000,
+
+    inset 0 0 30px #250000;
+
+    text-align:center;
+
+}
+
+
+
+/* Input */
+
+input{
+
+    width:100%;
+
+    height:55px;
+
+    background:#111;
+
+    border:1px solid #700000;
+
+    color:#700000;
+
+    text-align:center;
+
+    font-size:18px;
+
+    outline:none;
+
+}
+
+
+input:focus{
+
+    box-shadow:0 0 20px #900000;
+
+}
+
+
+
+/* Bouton */
+
+button{
+
+    margin-top:20px;
+
+    width:100%;
+
+    height:50px;
+
+    background:#300000;
+
+    border:none;
+
+    color:#900000;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+button:hover{
+
+    background:#600000;
+
+    color:white;
+
+}
+
+
+
+/* Erreur */
+
+#error{
+
+    margin-top:15px;
+
+    color:#800000;
+
+}
+
+
+
+/* Tremblement */
+
+.shake{
+
+    animation:shake .15s;
+
+}
+
+
+@keyframes shake{
+
+    0%{transform:translateX(0)}
+
+    25%{transform:translateX(-8px)}
+
+    50%{transform:translateX(8px)}
+
+    75%{transform:translateX(-5px)}
+
+    100%{transform:translateX(0)}
+
+}
+
+
+
+/* Transition feu */
+
+#burn{
+
+    position:fixed;
+
+    inset:0;
+
+    background:white;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:10;
+
+    transition:opacity 3s;
+
+}
+
+
+
+/* Final */
+
+#final{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:white;
+
+    color:black;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    z-index:20;
+
+}
+
+
+#final h1{
+
+    font-size:38px;
+
+    margin-bottom:25px;
+
+}
+
+
+#final p{
+
+    font-size:22px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div id="logo">HFM</div>
+
+
+<div id="burn"></div>
+
+
+
+<div class="box" id="box">
+
+
+<input 
+id="code"
+type="password"
+placeholder="Enter the truth">
+
+
+<button onclick="verify()">
+ENTER
+</button>
+
+
+<div id="error"></div>
+
+
+</div>
+
+
+
+<div id="final">
+
+<h1>The gate has opened.</h1>
+
+<p>
+for the next part you already went there,<br>
+remember the previous difficulties
+</p>
+
+</div>
+
+
+
+<script>
+
+
+/* Création des cendres */
+
+for(let i=0;i<80;i++){
+
+    let ash=document.createElement("div");
+
+    ash.className="ash";
+
+    ash.style.left=Math.random()*100+"%";
+
+    ash.style.animationDuration=
+    (5+Math.random()*10)+"s";
+
+    ash.style.opacity=
+    Math.random();
+
+    document.body.appendChild(ash);
+
+}
+
+
+
+
+function shake(){
+
+    document.body.classList.remove("shake");
+
+    void document.body.offsetWidth;
+
+    document.body.classList.add("shake");
+
+}
+
+
+
+async function verify(){
+
+    shake();
+
+
+    let code=document.getElementById("code").value;
+
+
+    /*
+    Ici on connectera Cloudflare Worker
+
+    */
+
+
+    document.getElementById("error").innerHTML=
+    "The gate remains closed.";
+
+}
+
+
+
+function success(){
+
+    document.getElementById("burn").style.opacity="1";
+
+
+    setTimeout(()=>{
+
+        document.getElementById("box").style.display="none";
+
+        document.getElementById("final").style.display="flex";
+
+    },3000);
+
+}
+
+
+</script>
+
+
+</body>
+</html>
