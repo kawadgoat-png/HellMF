@@ -1,73 +1,117 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>HFM</title>
 
+
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
 
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    user-select:none;
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+user-select:none;
+
 }
+
 
 body{
 
-    height:100vh;
-    overflow:hidden;
+height:100vh;
+overflow:hidden;
 
-    background:
-    radial-gradient(circle,#3a0000 0%,#160000 45%,#050000 100%);
+background:
+radial-gradient(circle at center,
+#520000 0%,
+#200000 40%,
+#050000 100%);
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+display:flex;
+justify-content:center;
+align-items:center;
 
-    font-family:Cinzel,serif;
+font-family:Cinzel,serif;
 
-    transition:background 3s;
+transition:background 3s;
+
 }
 
 
-/* Lumière rouge */
+
+/* Lueur rouge */
 
 body::before{
 
-    content:"";
+content:"";
 
-    position:absolute;
+position:absolute;
 
-    width:700px;
-    height:700px;
+width:800px;
+height:800px;
 
-    background:#900000;
+background:#a00000;
 
-    filter:blur(180px);
+filter:blur(200px);
 
-    opacity:.25;
+opacity:.25;
 
-    animation:pulse 5s infinite alternate;
+animation:pulse 6s infinite alternate;
 
 }
+
 
 
 @keyframes pulse{
 
-    from{
-        transform:scale(1);
-        opacity:.2;
-    }
+from{
 
-    to{
-        transform:scale(1.3);
-        opacity:.4;
-    }
+transform:scale(1);
+
+opacity:.2;
+
+}
+
+
+to{
+
+transform:scale(1.4);
+
+opacity:.45;
+
+}
+
+}
+
+
+
+/* HFM */
+
+#logo{
+
+position:absolute;
+
+top:35px;
+
+color:#030303;
+
+font-size:60px;
+
+letter-spacing:25px;
+
+text-shadow:
+
+0 0 15px #700000;
+
+z-index:5;
 
 }
 
@@ -77,56 +121,39 @@ body::before{
 
 .ash{
 
-    position:absolute;
+position:absolute;
 
-    width:5px;
-    height:5px;
+background:#888;
 
-    background:#777;
+width:4px;
+height:4px;
 
-    border-radius:50%;
+border-radius:50%;
 
-    opacity:.7;
+opacity:.6;
 
-    animation:fall linear infinite;
+animation:fall linear infinite;
 
 }
+
 
 
 @keyframes fall{
 
-    from{
 
-        transform:translateY(-20vh);
+from{
 
-    }
-
-    to{
-
-        transform:translateY(120vh);
-
-    }
+transform:translateY(-20vh);
 
 }
 
 
+to{
 
-/* Titre */
+transform:translateY(120vh);
 
-#logo{
+}
 
-    position:absolute;
-
-    top:35px;
-
-    color:#050505;
-
-    font-size:55px;
-
-    letter-spacing:18px;
-
-    text-shadow:
-    0 0 10px #500000;
 
 }
 
@@ -136,56 +163,62 @@ body::before{
 
 .box{
 
-    position:relative;
+position:relative;
 
-    z-index:2;
+z-index:2;
 
-    width:450px;
+width:460px;
 
-    padding:45px;
+padding:45px;
 
-    background:#050505;
+background:#050505;
 
-    border:1px solid #550000;
+border:
 
-    box-shadow:
+1px solid #700000;
 
-    0 0 40px #450000,
 
-    inset 0 0 30px #250000;
+box-shadow:
 
-    text-align:center;
+0 0 50px #500000,
+
+inset 0 0 30px #300000;
+
+
+text-align:center;
 
 }
 
 
 
-/* Input */
+/* Entrée */
 
 input{
 
-    width:100%;
 
-    height:55px;
+width:100%;
 
-    background:#111;
+height:55px;
 
-    border:1px solid #700000;
+background:#111;
 
-    color:#700000;
+border:1px solid #800000;
 
-    text-align:center;
+color:#900000;
 
-    font-size:18px;
+text-align:center;
 
-    outline:none;
+font-size:18px;
+
+outline:none;
 
 }
+
 
 
 input:focus{
 
-    box-shadow:0 0 20px #900000;
+box-shadow:0 0 25px #900000;
 
 }
 
@@ -195,44 +228,45 @@ input:focus{
 
 button{
 
-    margin-top:20px;
+margin-top:20px;
 
-    width:100%;
+width:100%;
 
-    height:50px;
+height:55px;
 
-    background:#300000;
+background:#300000;
 
-    border:none;
+border:none;
 
-    color:#900000;
+color:#a00000;
 
-    font-size:18px;
+font-size:18px;
 
-    cursor:pointer;
+cursor:pointer;
 
-    transition:.3s;
+transition:.3s;
 
 }
+
 
 
 button:hover{
 
-    background:#600000;
+background:#600000;
 
-    color:white;
+color:white;
 
 }
 
 
 
-/* Erreur */
+/* Message erreur */
 
 #error{
 
-    margin-top:15px;
+margin-top:15px;
 
-    color:#800000;
+color:#900000;
 
 }
 
@@ -242,90 +276,64 @@ button:hover{
 
 .shake{
 
-    animation:shake .15s;
+animation:shake .2s;
 
 }
+
 
 
 @keyframes shake{
 
-    0%{transform:translateX(0)}
 
-    25%{transform:translateX(-8px)}
+0%{
+transform:translateX(0);
+}
 
-    50%{transform:translateX(8px)}
 
-    75%{transform:translateX(-5px)}
+25%{
+transform:translateX(-10px);
+}
 
-    100%{transform:translateX(0)}
+
+50%{
+transform:translateX(10px);
+}
+
+
+75%{
+transform:translateX(-5px);
+}
+
+
+100%{
+transform:translateX(0);
+}
+
 
 }
 
 
 
-/* Transition feu */
+/* Transition blanche */
 
-#burn{
+#transition{
 
-    position:fixed;
+position:fixed;
 
-    inset:0;
+inset:0;
 
-    background:white;
+background:white;
 
-    opacity:0;
+opacity:0;
 
-    pointer-events:none;
+pointer-events:none;
 
-    z-index:10;
+z-index:20;
 
-    transition:opacity 3s;
-
-}
-
-
-
-/* Final */
-
-#final{
-
-    display:none;
-
-    position:fixed;
-
-    inset:0;
-
-    background:white;
-
-    color:black;
-
-    justify-content:center;
-
-    align-items:center;
-
-    flex-direction:column;
-
-    text-align:center;
-
-    z-index:20;
+transition:opacity 3s;
 
 }
 
-
-#final h1{
-
-    font-size:38px;
-
-    margin-bottom:25px;
-
-}
-
-
-#final p{
-
-    font-size:22px;
-
-}
 
 
 </style>
@@ -336,24 +344,27 @@ button:hover{
 <body>
 
 
-<div id="logo">HFM</div>
+<div id="logo">
+HFM
+</div>
 
 
-<div id="burn"></div>
-
+<div id="transition"></div>
 
 
 <div class="box" id="box">
 
 
-<input 
+<input
 id="code"
 type="password"
-placeholder="Enter the truth">
+placeholder="Enter the truth...">
 
 
 <button onclick="verify()">
+
 ENTER
+
 </button>
 
 
@@ -361,40 +372,31 @@ ENTER
 
 
 </div>
-
-
-
-<div id="final">
-
-<h1>The gate has opened.</h1>
-
-<p>
-for the next part you already went there,<br>
-remember the previous difficulties
-</p>
-
-</div>
-
-
-
 <script>
 
 
 /* Création des cendres */
 
-for(let i=0;i<80;i++){
+for(let i = 0; i < 100; i++){
 
-    let ash=document.createElement("div");
+    let ash = document.createElement("div");
 
-    ash.className="ash";
+    ash.className = "ash";
 
-    ash.style.left=Math.random()*100+"%";
 
-    ash.style.animationDuration=
-    (5+Math.random()*10)+"s";
+    ash.style.left = Math.random()*100 + "%";
 
-    ash.style.opacity=
+    ash.style.animationDuration =
+    (5 + Math.random()*12) + "s";
+
+
+    ash.style.animationDelay =
+    Math.random()*10 + "s";
+
+
+    ash.style.opacity =
     Math.random();
+
 
     document.body.appendChild(ash);
 
@@ -402,6 +404,7 @@ for(let i=0;i<80;i++){
 
 
 
+/* Tremblement */
 
 function shake(){
 
@@ -415,56 +418,164 @@ function shake(){
 
 
 
+/* Vérification */
+
 async function verify(){
 
-    let code=document.getElementById("code").value;
+
+    shake();
 
 
-    const response = await fetch(
+    let code =
+    document.getElementById("code").value;
+
+
+
+    try{
+
+
+        const response = await fetch(
+
         "https://hfm-verification.kawadgoat.workers.dev/",
+
         {
+
             method:"POST",
 
             headers:{
+
                 "Content-Type":"application/json"
+
             },
 
+
             body:JSON.stringify({
+
                 code:code
+
             })
+
+        });
+
+
+
+        const data =
+        await response.json();
+
+
+
+        if(data.success){
+
+
+            openGate(data.message);
+
+
         }
-    );
+
+        else{
 
 
-    const data = await response.json();
+            document.getElementById("error").innerHTML =
+            "The gate remains closed.";
 
 
-    if(data.success){
+        }
 
-        success();
 
-    }else{
-
-        document.getElementById("error").innerHTML =
-        "The gate remains closed.";
 
     }
+
+
+    catch(error){
+
+
+        document.getElementById("error").innerHTML =
+        "Connection error.";
+
+
+        console.log(error);
+
+
+    }
+
+
 
 }
 
 
-function success(){
 
-    document.getElementById("burn").style.opacity="1";
+
+/* Ouverture */
+
+function openGate(message){
+
+
+    document.getElementById("transition").style.opacity="1";
 
 
     setTimeout(()=>{
 
+
+        document.body.style.background="white";
+
+
         document.getElementById("box").style.display="none";
 
-        document.getElementById("final").style.display="flex";
+
+        document.getElementById("logo").style.display="none";
+
+
+
+        document.getElementById("transition").style.opacity="0";
+
+
+
+        let final=document.createElement("div");
+
+
+        final.style.position="fixed";
+
+        final.style.inset="0";
+
+        final.style.background="white";
+
+        final.style.color="black";
+
+        final.style.display="flex";
+
+        final.style.flexDirection="column";
+
+        final.style.justifyContent="center";
+
+        final.style.alignItems="center";
+
+        final.style.textAlign="center";
+
+        final.style.fontFamily="Cinzel,serif";
+
+
+
+        final.innerHTML=`
+
+        <h1 style="font-size:38px;margin-bottom:25px;">
+        The gate has opened.
+        </h1>
+
+        <p style="font-size:22px;">
+        ${message}
+        </p>
+
+        `;
+
+
+
+        document.body.appendChild(final);
+
+
 
     },3000);
+
+
 
 }
 
@@ -473,4 +584,5 @@ function success(){
 
 
 </body>
+
 </html>
