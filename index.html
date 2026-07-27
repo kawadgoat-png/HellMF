@@ -417,23 +417,40 @@ function shake(){
 
 async function verify(){
 
-    shake();
-
-
     let code=document.getElementById("code").value;
 
 
-    /*
-    Ici on connectera Cloudflare Worker
+    const response = await fetch(
+        "https://hfm-verification.kawadgoat.workers.dev/",
+        {
+            method:"POST",
 
-    */
+            headers:{
+                "Content-Type":"application/json"
+            },
+
+            body:JSON.stringify({
+                code:code
+            })
+        }
+    );
 
 
-    document.getElementById("error").innerHTML=
-    "The gate remains closed.";
+    const data = await response.json();
+
+
+    if(data.success){
+
+        success();
+
+    }else{
+
+        document.getElementById("error").innerHTML =
+        "The gate remains closed.";
+
+    }
 
 }
-
 
 
 function success(){
